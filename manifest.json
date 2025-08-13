@@ -8,5 +8,14 @@
     },
     "chrome_url_overrides": {
         "newtab": "index.html"
+    },
+    "permissions": [
+        "geolocation"
+    ],
+    "host_permissions": [
+        "https://apis.scrimba.com/*"
+    ],
+    "content_security_policy": {
+        "extension_pages": "script-src 'self'; object-src 'self';"
     }
 }

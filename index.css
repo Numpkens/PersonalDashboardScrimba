@@ -1,76 +1,359 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap");
+
 * {
-    box-sizing: border-box;
-}    
+  box-sizing: border-box;
+}
 
 body {
-    margin: 0;
-    background: no-repeat center center fixed; 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    color: white;
-    font-family: Arial, Helvetica, sans-serif;
-    text-shadow: 0px 0px 20px #242424;
+  margin: 0;
+  background: no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  color: #e0e0e0;
+  font-family: "Roboto Condensed", sans-serif;
+  text-shadow: 1px 1px 2px #000;
+  height: 100vh;
+  overflow: hidden; /* Prevent scrolling if content overflows due to fixed positioning */
 }
 
 main {
-    padding: 15px;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  position: relative; /* For absolute positioning of children */
+  width: 100%;
+  height: 100%;
 }
 
-div.top {
-    display: flex;
-    justify-content: space-between;
+/* Specific positioning for top elements */
+div.top-left-weather {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: rgba(20, 20, 20, 0.3);
+  padding: 15px;
+  border: 2px solid #555;
+  border-radius: 5px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 }
 
-h1.time {
-    text-align: center;
-}
-
-div#crypto {
-    font-size: 1.3rem;
-}
-
-div#crypto > p {
-    margin: 0;
-}
-
-div#crypto-top {
-    display: flex;
-    align-items: center;
-    margin-bottom: 5px;
-}
-
-div#crypto-top > span {
-    margin-left: 10px;
-}
-
-div#weather {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-    align-self: flex-start;
-    margin-top: -20px;
-}
-
-div#weather > img {
-    width: 70px;
+div.top-left-weather > img {
+  width: 70px;
+  filter: drop-shadow(2px 2px 2px #000);
 }
 
 p.weather-city {
-    width: 100%;
-    text-align: right;
-    margin: 0;
-    margin-top: -10px;
+  font-size: 1.5rem;
+  width: 100%;
+  text-align: center;
+  margin: 0;
+  margin-top: -10px;
+  color: #e0e0e0;
 }
 
 p.weather-temp {
-    margin: 0;
-    font-size: 1.7rem;
-    margin-left: -10px;
+  margin: 0;
+  font-size: 1.7rem;
+  margin-left: 0;
+  color: #e0e0e0;
+}
+
+div.top-center-timer {
+  position: absolute;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(20, 20, 20, 0.3);
+  padding: 3px;
+  border: 2px solid #555;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  width: 250px;
+  height: fit-content;
+}
+
+div.top-center-timer h2 {
+  color: #c0c0c0;
+  border-bottom: 2px solid #a0a0a0;
+  padding-bottom: 5px;
+  width: 100%;
+  text-align: center;
+  margin: 10px 0 0;
+}
+
+#timer-display {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #e0e0e0;
+  text-shadow: 2px 2px 4px #000;
+  margin: 20px 0;
+}
+
+.timer-controls {
+  display: flex;
+  gap: 3px;
+  margin-bottom: 10px; /* Added for spacing */
+}
+
+.timer-controls button {
+  background: #c0c0c0;
+  border: 2px solid #808080;
+  color: black;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 5px 10px;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.timer-controls button:hover {
+  background-color: #a0a0a0;
+}
+
+div.top-right-tasks {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background-color: rgba(20, 20, 20, 0.3);
+  padding: 20px;
+  border: 2px solid #555;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  justify-content: space-between;
+  width: 300px; /* Adjusted width for better fit */
+  max-height: 400px; /* Set max height for scrollable content */
+}
+
+div.top-right-tasks h2 {
+  color: #c0c0c0;
+  border-bottom: 2px solid #a0a0a0;
+  padding-bottom: 5px;
+  width: 100%;
+}
+
+.quest-input-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-top: auto;
+}
+
+div.top-right-tasks input {
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 1px solid #a0a0a0;
+  color: #e0e0e0;
+  padding: 12px 15px;
+  border-radius: 5px;
+  font-family: "Roboto Condensed", sans-serif;
+  margin-bottom: 10px;
+  width: 80%;
+  font-size: 1.2rem;
+}
+
+div.top-right-tasks button {
+  background: #c0c0c0;
+  border: 2px solid #808080;
+  color: black;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 10px 15px;
+  border-radius: 15px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  transition: background-color 0.3s;
+  width: 70%;
+}
+
+div.top-right-tasks button:hover {
+  background-color: #a0a0a0;
+}
+
+#task-list {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+  text-align: left;
+  flex-grow: 1;
+  overflow-y: auto; /* Enable scrolling for tasks */
+  max-height: 200px; /* Max height for scrollable list */
+}
+
+#task-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 8px;
+  border-left: 3px solid #c0c0c0;
+  border-radius: 3px;
+  font-size: 1.1rem;
+  position: relative;
+  text-align: left;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+#task-list li:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+#task-list li span {
+  flex-grow: 1;
+}
+
+#task-list li .delete-btn {
+  background: transparent;
+  border: none;
+  color: #e0e0e0;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0 5px;
+  margin: 0;
+  width: auto;
+}
+
+/* Center Content (Time, Quote and Search Bar) */
+.center-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 60%; /* Adjust as needed */
+  max-width: 800px; /* Limit max width */
+}
+
+.center-content h1.time {
+  font-size: 5rem;
+  text-align: center;
+  color: #c0c0c0;
+  text-shadow: 2px 2px 4px #000;
+  margin-bottom: 20px;
+}
+
+#quote-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  background-color: rgba(20, 20, 20, 0.3);
+  padding: 20px;
+  border: 2px solid #555;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  margin-bottom: 20px; /* Space between quote and search */
+}
+
+#quote-text {
+  font-size: 2rem;
+  font-family: "Roboto Condensed", sans-serif;
+  color: #e0e0e0;
+  font-style: italic;
+  text-shadow: 1px 1px 2px #000;
+}
+
+#quote-author {
+  font-size: 1.5rem;
+  font-family: "Roboto Condensed", sans-serif;
+  color: #a0a0a0;
+  text-shadow: 1px 1px 2px #000;
+  margin-top: 10px;
+}
+
+#search-form {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+#search-input {
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 1px solid #a0a0a0;
+  color: #e0e0e0;
+  padding: 12px 15px;
+  border-radius: 5px;
+  font-family: "Roboto Condensed", sans-serif;
+  width: 100%; /* Matches parent width */
+  font-size: 1.85rem;
+  text-align: center;
+}
+
+#search-input::placeholder {
+  color: #a0a0a0;
+}
+
+/* XP Bar Styles */
+.xp-container {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(calc(60% - 20px), 780px);
+  height: 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 1px solid #a0a0a0;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  padding: 0; /* Changed from padding: 0 5px; to padding: 0; */
+}
+
+.xp-bar {
+  height: 100%;
+  background-color: #a0a0a0;
+  border-radius: 5px;
+  width: 0;
+  transition: width 0.5s ease-in-out;
+}
+
+.xp-text {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px #000;
+}
+
+.xp-level-display {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #e0e0e0;
+  text-shadow: 2px 2px 4px #000;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: 1px solid #a0a0a0;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+}
+
+#author {
+  color: #a0a0a0;
+  font-size: 0.8rem;
+  position: fixed;
+  bottom: 15px;
+  left: 15px;
 }
